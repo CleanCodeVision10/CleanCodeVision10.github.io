@@ -112,8 +112,8 @@
                     <h3 class="text-xl font-bold mb-4 text-slate-900 dark:text-white">Workflow & Automation</h3>
                     <ul class="space-y-3 text-slate-600 dark:text-gray-400 text-sm">
                         <li class="flex items-start gap-2"><span class="text-cyan-500 dark:text-cyan-400 mt-1">▹</span> End-to-end process automation using SAP Build Process Automation (SBPA).</li>
-                        <li class="flex items-start gap-2"><span class="text-cyan-500 dark:text-cyan-400 mt-1">▹</span> Extensive experience designing and executing complex problem in incremental manner.</li>
-                        <li class="flex items-start gap-2"><span class="text-cyan-500 dark:text-cyan-400 mt-1">▹</span> Dynamic destination fetching based on business operations logic using Decisions.</li>
+                        <li class="flex items-start gap-2"><span class="text-cyan-500 dark:text-cyan-400 mt-1">▹</span> Extensive experience designing and executing complex <strong class="text-slate-800 dark:text-gray-200">Decision Trees</strong>.</li>
+                        <li class="flex items-start gap-2"><span class="text-cyan-500 dark:text-cyan-400 mt-1">▹</span> Dynamic destination fetching based on business operations logic.</li>
                         <li class="flex items-start gap-2"><span class="text-cyan-500 dark:text-cyan-400 mt-1">▹</span> Multi-level approval routing via SAP My Inbox.</li>
                     </ul>
                 </div>
@@ -252,7 +252,7 @@
                         </button>
                     </div>
                     
-                    <form action="https://formspree.io/f/xykvvvde" method="POST" class="space-y-4">
+                    <form id="contactForm" action="https://formspree.io/f/xykvvvde" method="POST" class="space-y-4">
                         <div>
                             <label for="name" class="block text-sm font-medium text-slate-600 dark:text-gray-400 mb-1 transition-colors">Your Name</label>
                             <input type="text" name="name" id="name" required class="w-full bg-slate-50 dark:bg-[#0a0a0a] border border-slate-300 dark:border-gray-700 rounded-lg px-4 py-3 text-slate-900 dark:text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors">
@@ -266,11 +266,20 @@
                             <textarea name="message" id="message" rows="4" required class="w-full bg-slate-50 dark:bg-[#0a0a0a] border border-slate-300 dark:border-gray-700 rounded-lg px-4 py-3 text-slate-900 dark:text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors resize-none"></textarea>
                         </div>
                         <div class="pt-2">
-                            <button type="submit" class="w-full px-8 py-3.5 bg-cyan-500 text-white dark:text-gray-950 rounded-lg font-bold hover:bg-cyan-600 dark:hover:bg-cyan-400 transition-colors">
+                            <button type="submit" id="submitBtn" class="w-full px-8 py-3.5 bg-cyan-500 text-white dark:text-gray-950 rounded-lg font-bold hover:bg-cyan-600 dark:hover:bg-cyan-400 transition-colors">
                                 Send Message
                             </button>
                         </div>
                     </form>
+
+                    <div id="formSuccess" class="hidden py-8 text-center flex-col items-center justify-center">
+                        <div class="w-16 h-16 bg-cyan-100 dark:bg-cyan-900/30 rounded-full flex items-center justify-center mb-6 mx-auto border border-cyan-200 dark:border-cyan-500/30">
+                            <svg class="w-8 h-8 text-cyan-600 dark:text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-2 transition-colors">Message Sent!</h4>
+                        <p class="text-slate-600 dark:text-gray-400 transition-colors">Hang tight, I'll get back to you in a blink.</p>
+                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -282,6 +291,11 @@
             const modal = document.getElementById(modalID);
             if (modal.classList.contains('hidden')) {
                 modal.classList.remove('hidden');
+                // Reset form state when reopening
+                document.getElementById('contactForm').style.display = 'block';
+                document.getElementById('contactForm').reset();
+                document.getElementById('formSuccess').classList.add('hidden');
+                document.getElementById('formSuccess').classList.remove('flex');
             } else {
                 modal.classList.add('hidden');
             }
@@ -297,6 +311,45 @@
                 localStorage.theme = 'dark';
             }
         }
+
+        // AJAX Form Submission
+        const form = document.getElementById("contactForm");
+        
+        form.addEventListener("submit", async function(event) {
+            event.preventDefault(); // Stop the default redirect
+            
+            const btn = document.getElementById("submitBtn");
+            const originalText = btn.innerHTML;
+            btn.innerHTML = "Sending...";
+            btn.disabled = true;
+
+            const data = new FormData(event.target);
+            
+            try {
+                const response = await fetch(event.target.action, {
+                    method: form.method,
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // Hide form and show success message
+                    form.style.display = 'none';
+                    const successMessage = document.getElementById('formSuccess');
+                    successMessage.classList.remove('hidden');
+                    successMessage.classList.add('flex');
+                } else {
+                    alert("Oops! There was a problem sending your message.");
+                }
+            } catch (error) {
+                alert("Oops! There was a problem sending your message.");
+            } finally {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
+        });
     </script>
 
 </body>
