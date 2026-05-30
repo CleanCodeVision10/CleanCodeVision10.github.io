@@ -1,175 +1,181 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arish Sharma | Senior SAP BTP Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Configure Tailwind to use class-based dark mode
+        tailwind.config = {
+            darkMode: 'class',
+        }
+        
+        // Prevent Flash of Unstyled Content (FOUC) by checking theme early
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
     <style>
         html { scroll-behavior: smooth; }
-        body { background-color: #0a0a0a; }
-        .glass-nav {
-            background: rgba(10, 10, 10, 0.7);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
+        /* Smooth transitions for theme switching */
+        body { transition: background-color 0.3s ease, color 0.3s ease; }
+        
         .card-hover:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 30px -10px rgba(6, 182, 212, 0.15);
-            border-color: rgba(6, 182, 212, 0.3);
         }
+        
+        /* Hide/Show icons based on theme */
+        html.dark .sun-icon { display: block; }
+        html.dark .moon-icon { display: none; }
+        html:not(.dark) .sun-icon { display: none; }
+        html:not(.dark) .moon-icon { display: block; }
     </style>
 </head>
-<body class="text-gray-300 font-sans leading-relaxed selection:bg-cyan-500 selection:text-white">
+<body class="bg-slate-50 text-slate-800 dark:bg-[#0a0a0a] dark:text-gray-300 font-sans leading-relaxed selection:bg-cyan-500 selection:text-white">
 
-    <!-- Navigation -->
-    <nav class="glass-nav fixed w-full z-40 top-0 transition-all">
+    <nav class="fixed w-full z-40 top-0 bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-md border-b border-slate-200 dark:border-white/5 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="font-bold text-2xl tracking-tighter text-white">
-                Arish<span class="text-cyan-400">.</span>
+            <a href="#" class="font-bold text-2xl tracking-tighter text-slate-900 dark:text-white transition-colors">
+                Arish<span class="text-cyan-500 dark:text-cyan-400">.</span>
             </a>
             <div class="hidden md:flex space-x-8 text-sm font-medium items-center">
-                <a href="#expertise" class="hover:text-cyan-400 transition-colors">Expertise</a>
-                <a href="#projects" class="hover:text-cyan-400 transition-colors">Solutions</a>
-                <a href="#btp-services" class="hover:text-cyan-400 transition-colors">BTP Services</a>
-                <a href="#certifications" class="hover:text-cyan-400 transition-colors">Certifications</a>
-                <button onclick="toggleModal('contactModal')" class="px-5 py-2 bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 rounded-lg hover:bg-cyan-500 hover:text-white transition-all">Contact Me</button>
+                <a href="#expertise" class="text-slate-600 hover:text-cyan-600 dark:text-gray-300 dark:hover:text-cyan-400 transition-colors">Expertise</a>
+                <a href="#projects" class="text-slate-600 hover:text-cyan-600 dark:text-gray-300 dark:hover:text-cyan-400 transition-colors">Solutions</a>
+                <a href="#btp-services" class="text-slate-600 hover:text-cyan-600 dark:text-gray-300 dark:hover:text-cyan-400 transition-colors">BTP Services</a>
+                <a href="#certifications" class="text-slate-600 hover:text-cyan-600 dark:text-gray-300 dark:hover:text-cyan-400 transition-colors">Certifications</a>
+                
+                <button onclick="toggleTheme()" class="p-2 text-slate-500 hover:text-cyan-600 dark:text-gray-400 dark:hover:text-cyan-400 transition-colors" aria-label="Toggle Dark Mode">
+                    <svg class="sun-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <svg class="moon-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
+
+                <button onclick="toggleModal('contactModal')" class="px-5 py-2 bg-cyan-50 text-cyan-600 border border-cyan-200 dark:bg-cyan-500/10 dark:text-cyan-400 dark:border-cyan-500/30 rounded-lg hover:bg-cyan-500 hover:text-white dark:hover:bg-cyan-500 dark:hover:text-white transition-all">Contact Me</button>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="min-h-screen flex items-center pt-20 px-6 max-w-6xl mx-auto relative overflow-hidden">
-        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-cyan-600/20 rounded-full blur-[120px] -z-10"></div>
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-cyan-400/20 dark:bg-cyan-600/20 rounded-full blur-[120px] -z-10 transition-colors duration-300"></div>
         
         <div class="w-full">
-            <p class="text-cyan-400 font-semibold tracking-wide mb-4 uppercase text-sm">Portfolio & Resume</p>
-            <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6 tracking-tight">
-                Senior <span class="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">SAP BTP</span><br> Developer
+            <p class="text-cyan-600 dark:text-cyan-400 font-semibold tracking-wide mb-4 uppercase text-sm">Portfolio & Resume</p>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 dark:text-white mb-6 tracking-tight transition-colors">
+                Senior <span class="bg-gradient-to-r from-cyan-500 to-blue-600 dark:from-cyan-400 dark:to-blue-500 bg-clip-text text-transparent">SAP BTP</span><br> Developer
             </h1>
-            <p class="text-lg md:text-xl text-gray-400 max-w-2xl mb-10 leading-relaxed">
+            <p class="text-lg md:text-xl text-slate-600 dark:text-gray-400 max-w-2xl mb-10 leading-relaxed transition-colors">
                 Architecting secure, scalable, and automated enterprise workflows. Specializing in UI5 Freestyle frontends, CAPM (Node.js) microservices, and end-to-end SAP BTP cloud deployments.
             </p>
             <div class="flex flex-wrap gap-4">
-                <a href="#projects" class="px-7 py-3.5 bg-cyan-500 text-gray-950 font-bold rounded-lg hover:bg-cyan-400 transition-colors">View Enterprise Solutions</a>
-                <a href="https://github.com/CleanCodeVision10" target="_blank" class="px-7 py-3.5 bg-gray-900 border border-gray-800 text-white font-semibold rounded-lg hover:border-gray-600 transition-all flex items-center gap-2">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
-                    GitHub Profile
-                </a>
+                <a href="#projects" class="px-7 py-3.5 bg-cyan-500 text-white dark:text-gray-950 font-bold rounded-lg hover:bg-cyan-600 dark:hover:bg-cyan-400 transition-colors shadow-lg shadow-cyan-500/20">View Enterprise Solutions</a>
             </div>
         </div>
     </section>
 
-    <!-- Core Expertise -->
-    <section id="expertise" class="py-24 border-t border-gray-800 bg-[#0c0c0c]">
+    <section id="expertise" class="py-24 bg-white dark:bg-[#0c0c0c] border-t border-slate-100 dark:border-gray-800 transition-colors duration-300">
         <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl font-bold mb-12 text-white">Core <span class="text-cyan-400">Expertise</span></h2>
+            <h2 class="text-3xl font-bold mb-12 text-slate-900 dark:text-white transition-colors">Core <span class="text-cyan-500 dark:text-cyan-400">Expertise</span></h2>
             <div class="grid md:grid-cols-3 gap-6">
-                <!-- UI5 Card -->
-                <div class="p-8 bg-gray-900 border border-gray-800 rounded-2xl card-hover transition-all duration-300">
-                    <div class="w-12 h-12 bg-blue-900/30 rounded-lg flex items-center justify-center mb-6 border border-blue-500/20">
-                        <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                <div class="p-8 bg-slate-50 border border-slate-200 dark:bg-gray-900 dark:border-gray-800 rounded-2xl card-hover transition-all duration-300 dark:hover:border-cyan-500/30 hover:border-cyan-500/30">
+                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mb-6 border border-blue-200 dark:border-blue-500/20">
+                        <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-4 text-white">UI5 Freestyle Engineering</h3>
-                    <ul class="space-y-3 text-gray-400 text-sm">
-                        <li class="flex items-start gap-2"><span class="text-cyan-400 mt-1">▹</span> Developing highly custom, responsive SAP UI5 freestyle applications.</li>
-                        <li class="flex items-start gap-2"><span class="text-cyan-400 mt-1">▹</span> Deep expertise in complex data visualization using VizFrames.</li>
-                        <li class="flex items-start gap-2"><span class="text-cyan-400 mt-1">▹</span> Seamless consumption of OData V2/V4 services.</li>
-                        <li class="flex items-start gap-2"><span class="text-cyan-400 mt-1">▹</span> Implementing destination-based access and secure routing.</li>
+                    <h3 class="text-xl font-bold mb-4 text-slate-900 dark:text-white">UI5 Freestyle Engineering</h3>
+                    <ul class="space-y-3 text-slate-600 dark:text-gray-400 text-sm">
+                        <li class="flex items-start gap-2"><span class="text-cyan-500 dark:text-cyan-400 mt-1">▹</span> Developing highly custom, responsive SAP UI5 freestyle applications.</li>
+                        <li class="flex items-start gap-2"><span class="text-cyan-500 dark:text-cyan-400 mt-1">▹</span> Deep expertise in complex data visualization using VizFrames.</li>
+                        <li class="flex items-start gap-2"><span class="text-cyan-500 dark:text-cyan-400 mt-1">▹</span> Seamless consumption of OData V2/V4 services.</li>
+                        <li class="flex items-start gap-2"><span class="text-cyan-500 dark:text-cyan-400 mt-1">▹</span> Implementing destination-based access and secure routing.</li>
                     </ul>
                 </div>
                 
-                <!-- CAPM Card -->
-                <div class="p-8 bg-gray-900 border border-gray-800 rounded-2xl card-hover transition-all duration-300">
-                    <div class="w-12 h-12 bg-green-900/30 rounded-lg flex items-center justify-center mb-6 border border-green-500/20">
-                        <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>
+                <div class="p-8 bg-slate-50 border border-slate-200 dark:bg-gray-900 dark:border-gray-800 rounded-2xl card-hover transition-all duration-300 dark:hover:border-cyan-500/30 hover:border-cyan-500/30">
+                    <div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mb-6 border border-green-200 dark:border-green-500/20">
+                        <svg class="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-4 text-white">CAPM (Node.js) Architecture</h3>
-                    <ul class="space-y-3 text-gray-400 text-sm">
-                        <li class="flex items-start gap-2"><span class="text-cyan-400 mt-1">▹</span> Designing scalable backend microservices using CAPM Node.js and CDS.</li>
-                        <li class="flex items-start gap-2"><span class="text-cyan-400 mt-1">▹</span> Engineering robust S/4HANA integrations via Cloud Connector.</li>
-                        <li class="flex items-start gap-2"><span class="text-cyan-400 mt-1">▹</span> Active Directory integrations (TCP/Certificates, LDAP, Technical Users).</li>
-                        <li class="flex items-start gap-2"><span class="text-cyan-400 mt-1">▹</span> Custom event handling and API provisioning.</li>
+                    <h3 class="text-xl font-bold mb-4 text-slate-900 dark:text-white">CAPM (Node.js) Architecture</h3>
+                    <ul class="space-y-3 text-slate-600 dark:text-gray-400 text-sm">
+                        <li class="flex items-start gap-2"><span class="text-cyan-500 dark:text-cyan-400 mt-1">▹</span> Designing scalable backend microservices using CAPM Node.js and CDS.</li>
+                        <li class="flex items-start gap-2"><span class="text-cyan-500 dark:text-cyan-400 mt-1">▹</span> Engineering robust S/4HANA integrations via Cloud Connector.</li>
+                        <li class="flex items-start gap-2"><span class="text-cyan-500 dark:text-cyan-400 mt-1">▹</span> Active Directory integrations (TCP/Certificates, LDAP, Technical Users).</li>
+                        <li class="flex items-start gap-2"><span class="text-cyan-500 dark:text-cyan-400 mt-1">▹</span> Custom event handling and API provisioning.</li>
                     </ul>
                 </div>
 
-                <!-- SBPA Card -->
-                <div class="p-8 bg-gray-900 border border-gray-800 rounded-2xl card-hover transition-all duration-300">
-                    <div class="w-12 h-12 bg-purple-900/30 rounded-lg flex items-center justify-center mb-6 border border-purple-500/20">
-                        <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path></svg>
+                <div class="p-8 bg-slate-50 border border-slate-200 dark:bg-gray-900 dark:border-gray-800 rounded-2xl card-hover transition-all duration-300 dark:hover:border-cyan-500/30 hover:border-cyan-500/30">
+                    <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center mb-6 border border-purple-200 dark:border-purple-500/20">
+                        <svg class="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path></svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-4 text-white">Workflow & Automation</h3>
-                    <ul class="space-y-3 text-gray-400 text-sm">
-                        <li class="flex items-start gap-2"><span class="text-cyan-400 mt-1">▹</span> End-to-end process automation using SAP Build Process Automation (SBPA).</li>
-                        <li class="flex items-start gap-2"><span class="text-cyan-400 mt-1">▹</span> Extensive experience designing and executing complex <strong class="text-gray-200">Decision Trees</strong>.</li>
-                        <li class="flex items-start gap-2"><span class="text-cyan-400 mt-1">▹</span> Dynamic destination fetching based on business operations logic.</li>
-                        <li class="flex items-start gap-2"><span class="text-cyan-400 mt-1">▹</span> Multi-level approval routing via SAP My Inbox.</li>
+                    <h3 class="text-xl font-bold mb-4 text-slate-900 dark:text-white">Workflow & Automation</h3>
+                    <ul class="space-y-3 text-slate-600 dark:text-gray-400 text-sm">
+                        <li class="flex items-start gap-2"><span class="text-cyan-500 dark:text-cyan-400 mt-1">▹</span> End-to-end process automation using SAP Build Process Automation (SBPA).</li>
+                        <li class="flex items-start gap-2"><span class="text-cyan-500 dark:text-cyan-400 mt-1">▹</span> Extensive experience designing and executing complex <strong class="text-slate-800 dark:text-gray-200">Decision Trees</strong>.</li>
+                        <li class="flex items-start gap-2"><span class="text-cyan-500 dark:text-cyan-400 mt-1">▹</span> Dynamic destination fetching based on business operations logic.</li>
+                        <li class="flex items-start gap-2"><span class="text-cyan-500 dark:text-cyan-400 mt-1">▹</span> Multi-level approval routing via SAP My Inbox.</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Enterprise Solutions -->
-    <section id="projects" class="py-24 border-t border-gray-800 bg-[#0a0a0a]">
+    <section id="projects" class="py-24 bg-slate-50 dark:bg-[#0a0a0a] border-t border-slate-200 dark:border-gray-800 transition-colors duration-300">
         <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl font-bold mb-12 text-white">Enterprise <span class="text-cyan-400">Solutions</span></h2>
+            <h2 class="text-3xl font-bold mb-12 text-slate-900 dark:text-white transition-colors">Enterprise <span class="text-cyan-500 dark:text-cyan-400">Solutions</span></h2>
             <div class="grid md:grid-cols-2 gap-8">
                 
-                <div class="bg-[#111] p-8 rounded-2xl border border-gray-800 relative overflow-hidden group hover:border-cyan-500/50 transition-all">
+                <div class="bg-white dark:bg-[#111] p-8 rounded-2xl border border-slate-200 dark:border-gray-800 relative overflow-hidden group hover:border-cyan-500/50 dark:hover:border-cyan-500/50 transition-all shadow-sm dark:shadow-none">
                     <div class="absolute top-0 left-0 w-1 h-full bg-cyan-500 group-hover:w-2 transition-all"></div>
-                    <h3 class="text-xl font-bold mb-2 text-white pl-4">BTP Security Observability Dashboard</h3>
-                    <p class="text-gray-400 pl-4 text-sm leading-relaxed mb-4">Engineered a full-stack freestyle UI5 dashboard visualizing SaaS application data via VizFrames. Developed the CAPM backend to integrate Audit Log APIs, SBPA Decisions, and real-time application logging for strict access control and live monitoring.</p>
+                    <h3 class="text-xl font-bold mb-2 text-slate-900 dark:text-white pl-4">BTP Security Observability Dashboard</h3>
+                    <p class="text-slate-600 dark:text-gray-400 pl-4 text-sm leading-relaxed mb-4">Engineered a full-stack freestyle UI5 dashboard visualizing SaaS application data via VizFrames. Developed the CAPM backend to integrate Audit Log APIs, SBPA Decisions, and real-time application logging for strict access control and live monitoring.</p>
                 </div>
 
-                <div class="bg-[#111] p-8 rounded-2xl border border-gray-800 relative overflow-hidden group hover:border-blue-500/50 transition-all">
+                <div class="bg-white dark:bg-[#111] p-8 rounded-2xl border border-slate-200 dark:border-gray-800 relative overflow-hidden group hover:border-blue-500/50 dark:hover:border-blue-500/50 transition-all shadow-sm dark:shadow-none">
                     <div class="absolute top-0 left-0 w-1 h-full bg-blue-500 group-hover:w-2 transition-all"></div>
-                    <h3 class="text-xl font-bold mb-2 text-white pl-4">Internal Control Finance Report (ICFR)</h3>
-                    <p class="text-gray-400 pl-4 text-sm leading-relaxed mb-4">Developed an end-to-end CAPM/UI5 application interfacing directly with S/4HANA via Cloud Connector. Utilized My Inbox for dynamic multi-level approvals and engineered SBPA Decision trees to fetch destinations dynamically across subaccounts.</p>
+                    <h3 class="text-xl font-bold mb-2 text-slate-900 dark:text-white pl-4">Internal Control Finance Report (ICFR)</h3>
+                    <p class="text-slate-600 dark:text-gray-400 pl-4 text-sm leading-relaxed mb-4">Developed an end-to-end CAPM/UI5 application interfacing directly with S/4HANA via Cloud Connector. Utilized My Inbox for dynamic multi-level approvals and engineered SBPA Decision trees to fetch destinations dynamically across subaccounts.</p>
                 </div>
 
-                <div class="bg-[#111] p-8 rounded-2xl border border-gray-800 relative overflow-hidden group hover:border-purple-500/50 transition-all">
+                <div class="bg-white dark:bg-[#111] p-8 rounded-2xl border border-slate-200 dark:border-gray-800 relative overflow-hidden group hover:border-purple-500/50 dark:hover:border-purple-500/50 transition-all shadow-sm dark:shadow-none">
                     <div class="absolute top-0 left-0 w-1 h-full bg-purple-500 group-hover:w-2 transition-all"></div>
-                    <h3 class="text-xl font-bold mb-2 text-white pl-4">Active Directory Integration Ecosystem</h3>
-                    <p class="text-gray-400 pl-4 text-sm leading-relaxed mb-4">Architected a highly scalable CAPM backend connecting to AD using TCP/Certificates and LDAP. Migrated extensive multi-tenant application logs to centralized Cloud Logging, implemented SAML2, and optimized overall infrastructure costs.</p>
+                    <h3 class="text-xl font-bold mb-2 text-slate-900 dark:text-white pl-4">Active Directory Integration Ecosystem</h3>
+                    <p class="text-slate-600 dark:text-gray-400 pl-4 text-sm leading-relaxed mb-4">Architected a highly scalable CAPM backend connecting to AD using TCP/Certificates and LDAP. Migrated extensive multi-tenant application logs to centralized Cloud Logging, implemented SAML2, and optimized overall infrastructure costs.</p>
                 </div>
 
-                <div class="bg-[#111] p-8 rounded-2xl border border-gray-800 relative overflow-hidden group hover:border-emerald-500/50 transition-all">
+                <div class="bg-white dark:bg-[#111] p-8 rounded-2xl border border-slate-200 dark:border-gray-800 relative overflow-hidden group hover:border-emerald-500/50 dark:hover:border-emerald-500/50 transition-all shadow-sm dark:shadow-none">
                     <div class="absolute top-0 left-0 w-1 h-full bg-emerald-500 group-hover:w-2 transition-all"></div>
-                    <h3 class="text-xl font-bold mb-2 text-white pl-4">Enterprise GST Reconciliation Engine</h3>
-                    <p class="text-gray-400 pl-4 text-sm leading-relaxed mb-4">Designed an automated enterprise solution matching internal SAP purchase data with external GST portal records (GSTR-2B) to streamline Input Tax Credit management, leveraging CAPM Node.js and secure API integrations.</p>
+                    <h3 class="text-xl font-bold mb-2 text-slate-900 dark:text-white pl-4">Enterprise GST Reconciliation Engine</h3>
+                    <p class="text-slate-600 dark:text-gray-400 pl-4 text-sm leading-relaxed mb-4">Designed an automated enterprise solution matching internal SAP purchase data with external GST portal records (GSTR-2B) to streamline Input Tax Credit management, leveraging CAPM Node.js and secure API integrations.</p>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- Certifications (New Section using Cards) -->
-    <section id="certifications" class="py-24 border-t border-gray-800 bg-[#0c0c0c]">
+    <section id="certifications" class="py-24 bg-white dark:bg-[#0c0c0c] border-t border-slate-100 dark:border-gray-800 transition-colors duration-300">
         <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl font-bold mb-12 text-center text-white">Official <span class="text-cyan-400">Certifications</span></h2>
+            <h2 class="text-3xl font-bold mb-12 text-center text-slate-900 dark:text-white transition-colors">Official <span class="text-cyan-500 dark:text-cyan-400">Certifications</span></h2>
             <div class="grid md:grid-cols-2 gap-8">
                 
-                <!-- Certification Card 1 -->
-                <div class="bg-gradient-to-br from-gray-900 to-[#111] p-8 rounded-2xl border border-gray-800 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-6 card-hover transition-all duration-300">
-                    <div class="w-16 h-16 shrink-0 bg-blue-900/30 rounded-xl flex items-center justify-center border border-blue-500/30">
-                        <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <div class="bg-gradient-to-br from-slate-50 to-white dark:from-gray-900 dark:to-[#111] p-8 rounded-2xl border border-slate-200 dark:border-gray-800 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-6 card-hover transition-all duration-300 shadow-sm dark:shadow-none">
+                    <div class="w-16 h-16 shrink-0 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center border border-blue-200 dark:border-blue-500/30">
+                        <svg class="w-8 h-8 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     </div>
                     <div>
-                        <p class="text-sm text-cyan-400 font-semibold uppercase tracking-wider mb-2">SAP Certified Associate</p>
-                        <h3 class="text-xl font-bold text-white leading-tight">SAP Fiori Application Developer</h3>
+                        <p class="text-sm text-cyan-600 dark:text-cyan-400 font-semibold uppercase tracking-wider mb-2">SAP Certified Associate</p>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white leading-tight">SAP Fiori Application Developer</h3>
                     </div>
                 </div>
 
-                <!-- Certification Card 2 -->
-                <div class="bg-gradient-to-br from-gray-900 to-[#111] p-8 rounded-2xl border border-gray-800 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-6 card-hover transition-all duration-300">
-                    <div class="w-16 h-16 shrink-0 bg-green-900/30 rounded-xl flex items-center justify-center border border-green-500/30">
-                        <svg class="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <div class="bg-gradient-to-br from-slate-50 to-white dark:from-gray-900 dark:to-[#111] p-8 rounded-2xl border border-slate-200 dark:border-gray-800 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-6 card-hover transition-all duration-300 shadow-sm dark:shadow-none">
+                    <div class="w-16 h-16 shrink-0 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center border border-green-200 dark:border-green-500/30">
+                        <svg class="w-8 h-8 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     </div>
                     <div>
-                        <p class="text-sm text-cyan-400 font-semibold uppercase tracking-wider mb-2">SAP Certified</p>
-                        <h3 class="text-xl font-bold text-white leading-tight">Backend Developer - SAP Cloud Application Programming Model</h3>
+                        <p class="text-sm text-cyan-600 dark:text-cyan-400 font-semibold uppercase tracking-wider mb-2">SAP Certified</p>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white leading-tight">Backend Developer - SAP Cloud Application Programming Model</h3>
                     </div>
                 </div>
 
@@ -177,56 +183,53 @@
         </div>
     </section>
 
-    <!-- Hands-on BTP Services (Updated to Grid Cards) -->
-    <section id="btp-services" class="py-24 border-t border-gray-800 bg-[#0a0a0a]">
+    <section id="btp-services" class="py-24 bg-slate-50 dark:bg-[#0a0a0a] border-t border-slate-200 dark:border-gray-800 transition-colors duration-300">
         <div class="max-w-6xl mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold mb-6 text-white">Hands-on <span class="text-cyan-400">BTP Services</span></h2>
-            <p class="text-gray-400 mb-12 max-w-2xl mx-auto">Extensive production experience deploying, configuring, and integrating the following SAP Business Technology Platform services:</p>
+            <h2 class="text-3xl font-bold mb-6 text-slate-900 dark:text-white transition-colors">Hands-on <span class="text-cyan-500 dark:text-cyan-400">BTP Services</span></h2>
+            <p class="text-slate-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto transition-colors">Extensive production experience deploying, configuring, and integrating the following SAP Business Technology Platform services:</p>
             
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                <div class="p-4 bg-[#111] border border-gray-800 rounded-xl flex items-center justify-center card-hover transition-all duration-300">
-                    <span class="text-gray-300 font-medium text-sm">SAP Build Process Automation (SBPA)</span>
+                <div class="p-4 bg-white dark:bg-[#111] border border-slate-200 dark:border-gray-800 rounded-xl flex items-center justify-center card-hover transition-all duration-300 shadow-sm dark:shadow-none">
+                    <span class="text-slate-700 dark:text-gray-300 font-medium text-sm text-center">SAP Build Process Automation (SBPA)</span>
                 </div>
-                <div class="p-4 bg-[#111] border border-gray-800 rounded-xl flex items-center justify-center card-hover transition-all duration-300">
-                    <span class="text-gray-300 font-medium text-sm">SAP HANA Cloud</span>
+                <div class="p-4 bg-white dark:bg-[#111] border border-slate-200 dark:border-gray-800 rounded-xl flex items-center justify-center card-hover transition-all duration-300 shadow-sm dark:shadow-none">
+                    <span class="text-slate-700 dark:text-gray-300 font-medium text-sm text-center">SAP HANA Cloud</span>
                 </div>
-                <div class="p-4 bg-[#111] border border-gray-800 rounded-xl flex items-center justify-center card-hover transition-all duration-300">
-                    <span class="text-gray-300 font-medium text-sm">SAP Event Mesh</span>
+                <div class="p-4 bg-white dark:bg-[#111] border border-slate-200 dark:border-gray-800 rounded-xl flex items-center justify-center card-hover transition-all duration-300 shadow-sm dark:shadow-none">
+                    <span class="text-slate-700 dark:text-gray-300 font-medium text-sm text-center">SAP Event Mesh</span>
                 </div>
-                <div class="p-4 bg-[#111] border border-gray-800 rounded-xl flex items-center justify-center card-hover transition-all duration-300">
-                    <span class="text-gray-300 font-medium text-sm">SAP Job Scheduling Service</span>
+                <div class="p-4 bg-white dark:bg-[#111] border border-slate-200 dark:border-gray-800 rounded-xl flex items-center justify-center card-hover transition-all duration-300 shadow-sm dark:shadow-none">
+                    <span class="text-slate-700 dark:text-gray-300 font-medium text-sm text-center">SAP Job Scheduling Service</span>
                 </div>
-                <div class="p-4 bg-[#111] border border-gray-800 rounded-xl flex items-center justify-center card-hover transition-all duration-300">
-                    <span class="text-gray-300 font-medium text-sm">Authorization & Trust Management</span>
+                <div class="p-4 bg-white dark:bg-[#111] border border-slate-200 dark:border-gray-800 rounded-xl flex items-center justify-center card-hover transition-all duration-300 shadow-sm dark:shadow-none">
+                    <span class="text-slate-700 dark:text-gray-300 font-medium text-sm text-center">Authorization & Trust Management</span>
                 </div>
-                <div class="p-4 bg-[#111] border border-gray-800 rounded-xl flex items-center justify-center card-hover transition-all duration-300">
-                    <span class="text-gray-300 font-medium text-sm">SAP Destination Service</span>
+                <div class="p-4 bg-white dark:bg-[#111] border border-slate-200 dark:border-gray-800 rounded-xl flex items-center justify-center card-hover transition-all duration-300 shadow-sm dark:shadow-none">
+                    <span class="text-slate-700 dark:text-gray-300 font-medium text-sm text-center">SAP Destination Service</span>
                 </div>
-                <div class="p-4 bg-[#111] border border-gray-800 rounded-xl flex items-center justify-center card-hover transition-all duration-300">
-                    <span class="text-gray-300 font-medium text-sm">Cloud & Audit Logging</span>
+                <div class="p-4 bg-white dark:bg-[#111] border border-slate-200 dark:border-gray-800 rounded-xl flex items-center justify-center card-hover transition-all duration-300 shadow-sm dark:shadow-none">
+                    <span class="text-slate-700 dark:text-gray-300 font-medium text-sm text-center">Cloud & Audit Logging</span>
                 </div>
-                <div class="p-4 bg-[#111] border border-gray-800 rounded-xl flex items-center justify-center card-hover transition-all duration-300">
-                    <span class="text-gray-300 font-medium text-sm">SAP Document Management</span>
+                <div class="p-4 bg-white dark:bg-[#111] border border-slate-200 dark:border-gray-800 rounded-xl flex items-center justify-center card-hover transition-all duration-300 shadow-sm dark:shadow-none">
+                    <span class="text-slate-700 dark:text-gray-300 font-medium text-sm text-center">SAP Document Management</span>
                 </div>
-                <div class="p-4 bg-[#111] border border-gray-800 rounded-xl flex items-center justify-center card-hover transition-all duration-300">
-                    <span class="text-gray-300 font-medium text-sm">HTML5 App Repository</span>
+                <div class="p-4 bg-white dark:bg-[#111] border border-slate-200 dark:border-gray-800 rounded-xl flex items-center justify-center card-hover transition-all duration-300 shadow-sm dark:shadow-none">
+                    <span class="text-slate-700 dark:text-gray-300 font-medium text-sm text-center">HTML5 App Repository</span>
                 </div>
-                <div class="p-4 bg-[#111] border border-gray-800 rounded-xl flex items-center justify-center card-hover transition-all duration-300">
-                    <span class="text-gray-300 font-medium text-sm">User-Provided Services</span>
+                <div class="p-4 bg-white dark:bg-[#111] border border-slate-200 dark:border-gray-800 rounded-xl flex items-center justify-center card-hover transition-all duration-300 shadow-sm dark:shadow-none">
+                    <span class="text-slate-700 dark:text-gray-300 font-medium text-sm text-center">User-Provided Services</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Call to Action -->
-    <section id="contact" class="py-24 border-t border-gray-800 bg-[#0c0c0c] relative overflow-hidden">
-        <div class="absolute bottom-0 right-0 w-96 h-96 bg-cyan-900/10 rounded-full blur-[100px] -z-10"></div>
+    <section id="contact" class="py-24 bg-white dark:bg-[#0c0c0c] border-t border-slate-100 dark:border-gray-800 relative overflow-hidden transition-colors duration-300">
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-cyan-200/40 dark:bg-cyan-900/10 rounded-full blur-[100px] -z-10 transition-colors duration-300"></div>
         <div class="max-w-3xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-extrabold mb-6 text-white">Let's Build Something <span class="text-cyan-400">Together</span></h2>
-            <p class="text-gray-400 mb-10 text-lg">Available for freelance consulting, technical architecture discussions, and senior development roles.</p>
+            <h2 class="text-4xl font-extrabold mb-6 text-slate-900 dark:text-white transition-colors">Let's Build Something <span class="text-cyan-500 dark:text-cyan-400">Together</span></h2>
+            <p class="text-slate-600 dark:text-gray-400 mb-10 text-lg transition-colors">Available for freelance consulting, technical architecture discussions, and senior development roles.</p>
             <div class="flex justify-center">
-                <!-- Button triggers the modal -->
-                <button onclick="toggleModal('contactModal')" class="px-8 py-4 bg-cyan-500 text-gray-950 rounded-lg font-bold hover:bg-cyan-400 transition-colors flex items-center justify-center gap-2">
+                <button onclick="toggleModal('contactModal')" class="px-8 py-4 bg-cyan-500 text-white dark:text-gray-950 rounded-lg font-bold hover:bg-cyan-600 dark:hover:bg-cyan-400 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/20">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
                     Send me a Message
                 </button>
@@ -234,38 +237,36 @@
         </div>
     </section>
 
-    <footer class="bg-[#050505] py-8 text-center text-gray-600 text-sm border-t border-gray-900">
+    <footer class="bg-slate-100 dark:bg-[#050505] py-8 text-center text-slate-500 dark:text-gray-600 text-sm border-t border-slate-200 dark:border-gray-900 transition-colors duration-300">
         <p>&copy; 2026 Arish Sharma. Designed & Built for the Cloud.</p>
     </footer>
 
-    <!-- Contact Pop-up Modal -->
-    <div id="contactModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-sm transition-opacity" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div id="contactModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/50 dark:bg-black/80 backdrop-blur-sm transition-all" aria-labelledby="modal-title" role="dialog" aria-modal="true">
         <div class="flex items-center justify-center min-h-screen p-4 text-center sm:p-0">
-            <div class="relative bg-gray-900 border border-gray-700 rounded-2xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:max-w-lg w-full">
+            <div class="relative bg-white dark:bg-gray-900 border border-slate-200 dark:border-gray-700 rounded-2xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:max-w-lg w-full">
                 <div class="px-6 py-6 sm:px-8 sm:py-8">
                     <div class="flex justify-between items-center mb-5">
-                        <h3 class="text-2xl font-bold text-white" id="modal-title">Get in Touch</h3>
-                        <button onclick="toggleModal('contactModal')" class="text-gray-400 hover:text-white transition-colors">
+                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white transition-colors" id="modal-title">Get in Touch</h3>
+                        <button onclick="toggleModal('contactModal')" class="text-slate-400 hover:text-slate-600 dark:text-gray-400 dark:hover:text-white transition-colors">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                         </button>
                     </div>
                     
-                    <!-- Formspree Form Integration -->
-                    <form action="https://formspree.io/f/xykvvvde" method="POST" class="space-y-4">
+                    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-4">
                         <div>
-                            <label for="name" class="block text-sm font-medium text-gray-400 mb-1">Your Name</label>
-                            <input type="text" name="name" id="name" required class="w-full bg-[#0a0a0a] border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors">
+                            <label for="name" class="block text-sm font-medium text-slate-600 dark:text-gray-400 mb-1 transition-colors">Your Name</label>
+                            <input type="text" name="name" id="name" required class="w-full bg-slate-50 dark:bg-[#0a0a0a] border border-slate-300 dark:border-gray-700 rounded-lg px-4 py-3 text-slate-900 dark:text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors">
                         </div>
                         <div>
-                            <label for="email" class="block text-sm font-medium text-gray-400 mb-1">Your Email</label>
-                            <input type="email" name="email" id="email" required class="w-full bg-[#0a0a0a] border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors">
+                            <label for="email" class="block text-sm font-medium text-slate-600 dark:text-gray-400 mb-1 transition-colors">Your Email</label>
+                            <input type="email" name="email" id="email" required class="w-full bg-slate-50 dark:bg-[#0a0a0a] border border-slate-300 dark:border-gray-700 rounded-lg px-4 py-3 text-slate-900 dark:text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors">
                         </div>
                         <div>
-                            <label for="message" class="block text-sm font-medium text-gray-400 mb-1">Message</label>
-                            <textarea name="message" id="message" rows="4" required class="w-full bg-[#0a0a0a] border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors resize-none"></textarea>
+                            <label for="message" class="block text-sm font-medium text-slate-600 dark:text-gray-400 mb-1 transition-colors">Message</label>
+                            <textarea name="message" id="message" rows="4" required class="w-full bg-slate-50 dark:bg-[#0a0a0a] border border-slate-300 dark:border-gray-700 rounded-lg px-4 py-3 text-slate-900 dark:text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors resize-none"></textarea>
                         </div>
                         <div class="pt-2">
-                            <button type="submit" class="w-full px-8 py-3.5 bg-cyan-500 text-gray-950 rounded-lg font-bold hover:bg-cyan-400 transition-colors">
+                            <button type="submit" class="w-full px-8 py-3.5 bg-cyan-500 text-white dark:text-gray-950 rounded-lg font-bold hover:bg-cyan-600 dark:hover:bg-cyan-400 transition-colors">
                                 Send Message
                             </button>
                         </div>
@@ -275,14 +276,25 @@
         </div>
     </div>
 
-    <!-- JavaScript to toggle the modal -->
     <script>
+        // Modal Toggle Function
         function toggleModal(modalID) {
             const modal = document.getElementById(modalID);
             if (modal.classList.contains('hidden')) {
                 modal.classList.remove('hidden');
             } else {
                 modal.classList.add('hidden');
+            }
+        }
+
+        // Theme Toggle Function
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
             }
         }
     </script>
