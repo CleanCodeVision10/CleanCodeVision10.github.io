@@ -3,124 +3,245 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arish Sharma | Full Stack BTP Developer</title>
+    <title>Arish Sharma | Senior SAP BTP Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         html { scroll-behavior: smooth; }
+        body { background-color: #0a0a0a; }
+        .glass-nav {
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -10px rgba(6, 182, 212, 0.15);
+            border-color: rgba(6, 182, 212, 0.3);
+        }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+<body class="text-gray-300 font-sans leading-relaxed selection:bg-cyan-500 selection:text-white">
 
-    <nav class="bg-white shadow-sm fixed w-full z-10 top-0">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#" class="font-bold text-xl text-blue-600">Arish Sharma</a>
-            <div class="space-x-6 text-sm font-medium">
-                <a href="#services" class="hover:text-blue-600 transition">Services</a>
-                <a href="#projects" class="hover:text-blue-600 transition">Projects</a>
-                <a href="#skills" class="hover:text-blue-600 transition">Skills</a>
-                <a href="#contact" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">Contact Me</a>
+    <!-- Navigation -->
+    <nav class="glass-nav fixed w-full z-40 top-0 transition-all">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="font-bold text-2xl tracking-tighter text-white">
+                Arish<span class="text-cyan-400">.</span>
+            </a>
+            <div class="hidden md:flex space-x-8 text-sm font-medium items-center">
+                <a href="#expertise" class="hover:text-cyan-400 transition-colors">Expertise</a>
+                <a href="#projects" class="hover:text-cyan-400 transition-colors">Solutions</a>
+                <a href="#btp-services" class="hover:text-cyan-400 transition-colors">BTP Services</a>
+                <button onclick="toggleModal('contactModal')" class="px-5 py-2 bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 rounded-lg hover:bg-cyan-500 hover:text-white transition-all">Contact Me</button>
             </div>
         </div>
     </nav>
 
-    <section class="pt-32 pb-20 px-4 max-w-6xl mx-auto text-center">
-        <h1 class="text-5xl font-extrabold mb-6">Full Stack <span class="text-blue-600">SAP BTP</span> Developer</h1>
-        <p class="text-xl text-slate-600 max-w-2xl mx-auto mb-10">
-            Specializing in SAP UI5 Freestyle, CAPM (Node.js), and end-to-end BTP cloud deployments. I build secure, scalable, and automated enterprise workflows.
-        </p>
-        <div class="flex justify-center gap-4">
-            <a href="#projects" class="px-6 py-3 border-2 border-slate-800 text-slate-800 font-semibold rounded-md hover:bg-slate-800 hover:text-white transition">View My Work</a>
-            <a href="https://github.com/CleanCodeVision10" target="_blank" class="px-6 py-3 border-2 border-slate-200 bg-slate-200 text-slate-800 font-semibold rounded-md hover:bg-slate-300 transition">GitHub Profile</a>
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center pt-20 px-6 max-w-6xl mx-auto relative overflow-hidden">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-cyan-600/20 rounded-full blur-[120px] -z-10"></div>
+        
+        <div class="w-full">
+            <p class="text-cyan-400 font-semibold tracking-wide mb-4 uppercase text-sm">Portfolio & Resume</p>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6 tracking-tight">
+                Senior <span class="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">SAP BTP</span><br> Developer
+            </h1>
+            <p class="text-lg md:text-xl text-gray-400 max-w-2xl mb-10 leading-relaxed">
+                Architecting secure, scalable, and automated enterprise workflows. Specializing in UI5 Freestyle frontends, CAPM (Node.js) microservices, and end-to-end SAP BTP cloud deployments.
+            </p>
+            <div class="flex flex-wrap gap-4">
+                <a href="#projects" class="px-7 py-3.5 bg-cyan-500 text-gray-950 font-bold rounded-lg hover:bg-cyan-400 transition-colors">View Enterprise Solutions</a>
+                <a href="https://github.com/CleanCodeVision10" target="_blank" class="px-7 py-3.5 bg-gray-900 border border-gray-800 text-white font-semibold rounded-lg hover:border-gray-600 transition-all flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+                    GitHub Profile
+                </a>
+            </div>
         </div>
     </section>
 
-    <section id="services" class="py-20 bg-white">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-12 text-center">Enterprise Services</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="p-6 border border-slate-100 rounded-xl shadow-sm hover:shadow-md transition">
-                    <h3 class="text-xl font-bold mb-3 text-blue-600">UI5 Frontend Engineering</h3>
-                    <p class="text-slate-600">Developing responsive, free-style SAP UI5 and Fiori applications. Expertise in complex controls like VizFrames and integrating destination-based access.</p>
+    <!-- Core Expertise -->
+    <section id="expertise" class="py-24 border-t border-gray-800 bg-[#0c0c0c]">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-white">Core <span class="text-cyan-400">Expertise</span></h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- UI5 Card -->
+                <div class="p-8 bg-gray-900 border border-gray-800 rounded-2xl card-hover transition-all duration-300">
+                    <div class="w-12 h-12 bg-blue-900/30 rounded-lg flex items-center justify-center mb-6 border border-blue-500/20">
+                        <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-white">UI5 Freestyle Engineering</h3>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li class="flex items-start gap-2"><span class="text-cyan-400 mt-1">▹</span> Developing highly custom, responsive SAP UI5 freestyle applications.</li>
+                        <li class="flex items-start gap-2"><span class="text-cyan-400 mt-1">▹</span> Deep expertise in complex data visualization using VizFrames.</li>
+                        <li class="flex items-start gap-2"><span class="text-cyan-400 mt-1">▹</span> Seamless consumption of OData V2/V4 services.</li>
+                        <li class="flex items-start gap-2"><span class="text-cyan-400 mt-1">▹</span> Implementing destination-based access and secure routing.</li>
+                    </ul>
                 </div>
-                <div class="p-6 border border-slate-100 rounded-xl shadow-sm hover:shadow-md transition">
-                    <h3 class="text-xl font-bold mb-3 text-blue-600">CAPM Backend Architecture</h3>
-                    <p class="text-slate-600">Building scalable backend services using Node.js and CAPM framework. Specializing in S/4HANA integrations, custom APIs, and Active Directory linkages.</p>
+                
+                <!-- CAPM Card -->
+                <div class="p-8 bg-gray-900 border border-gray-800 rounded-2xl card-hover transition-all duration-300">
+                    <div class="w-12 h-12 bg-green-900/30 rounded-lg flex items-center justify-center mb-6 border border-green-500/20">
+                        <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-white">CAPM (Node.js) Architecture</h3>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li class="flex items-start gap-2"><span class="text-cyan-400 mt-1">▹</span> Designing scalable backend microservices using CAPM Node.js and CDS.</li>
+                        <li class="flex items-start gap-2"><span class="text-cyan-400 mt-1">▹</span> Engineering robust S/4HANA integrations via Cloud Connector.</li>
+                        <li class="flex items-start gap-2"><span class="text-cyan-400 mt-1">▹</span> Active Directory integrations (TCP/Certificates, LDAP, Technical Users).</li>
+                        <li class="flex items-start gap-2"><span class="text-cyan-400 mt-1">▹</span> Custom event handling and API provisioning.</li>
+                    </ul>
                 </div>
-                <div class="p-6 border border-slate-100 rounded-xl shadow-sm hover:shadow-md transition">
-                    <h3 class="text-xl font-bold mb-3 text-blue-600">BTP Security & Automation</h3>
-                    <p class="text-slate-600">Implementing SBPA for workflow decisions, centralized Cloud Logging, SAML2/Identity Provider setup, and optimizing subaccount tenancy costs.</p>
+
+                <!-- SBPA Card -->
+                <div class="p-8 bg-gray-900 border border-gray-800 rounded-2xl card-hover transition-all duration-300">
+                    <div class="w-12 h-12 bg-purple-900/30 rounded-lg flex items-center justify-center mb-6 border border-purple-500/20">
+                        <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Workflow & Automation</h3>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li class="flex items-start gap-2"><span class="text-cyan-400 mt-1">▹</span> End-to-end process automation using SAP Build Process Automation (SBPA).</li>
+                        <li class="flex items-start gap-2"><span class="text-cyan-400 mt-1">▹</span> Extensive experience designing and executing complex <strong class="text-gray-200">Decision Trees</strong>.</li>
+                        <li class="flex items-start gap-2"><span class="text-cyan-400 mt-1">▹</span> Dynamic destination fetching based on business operations logic.</li>
+                        <li class="flex items-start gap-2"><span class="text-cyan-400 mt-1">▹</span> Multi-level approval routing via SAP My Inbox.</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="py-20 bg-slate-50">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-12 text-center">Featured Solutions</h2>
+    <!-- Enterprise Solutions -->
+    <section id="projects" class="py-24 border-t border-gray-800 bg-[#0a0a0a]">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-white">Enterprise <span class="text-cyan-400">Solutions</span></h2>
             <div class="grid md:grid-cols-2 gap-8">
                 
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100">
-                    <h3 class="text-xl font-bold mb-2">BTP Security Observability Dashboard</h3>
-                    <p class="text-sm text-blue-600 font-semibold mb-4">Infosys Ltd. | Pharma Client</p>
-                    <p class="text-slate-600 mb-4">Built a freestyle UI5 dashboard visualizing SaaS data via VizFrames. Engineered the CAPM backend to integrate Audit Log APIs, SBPA Decisions, and real-time application logging for secure access control.</p>
+                <div class="bg-[#111] p-8 rounded-2xl border border-gray-800 relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-cyan-500 group-hover:w-2 transition-all"></div>
+                    <h3 class="text-xl font-bold mb-2 text-white pl-4">BTP Security Observability Dashboard</h3>
+                    <p class="text-gray-400 pl-4 text-sm leading-relaxed mb-4">Engineered a full-stack freestyle UI5 dashboard visualizing SaaS application data via VizFrames. Developed the CAPM backend to integrate Audit Log APIs, SBPA Decisions, and real-time application logging for strict access control and live monitoring.</p>
                 </div>
 
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100">
-                    <h3 class="text-xl font-bold mb-2">Internal Control Finance Report (ICFR)</h3>
-                    <p class="text-sm text-blue-600 font-semibold mb-4">Infosys Ltd.</p>
-                    <p class="text-slate-600 mb-4">Developed an end-to-end CAPM/UI5 application interfacing with S/4HANA via Cloud Connector. Utilized My Inbox for multi-level approvals and SBPA Decisions for dynamic destination fetching.</p>
+                <div class="bg-[#111] p-8 rounded-2xl border border-gray-800 relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-blue-500 group-hover:w-2 transition-all"></div>
+                    <h3 class="text-xl font-bold mb-2 text-white pl-4">Internal Control Finance Report (ICFR)</h3>
+                    <p class="text-gray-400 pl-4 text-sm leading-relaxed mb-4">Developed an end-to-end CAPM/UI5 application interfacing directly with S/4HANA via Cloud Connector. Utilized My Inbox for dynamic multi-level approvals and engineered SBPA Decision trees to fetch destinations dynamically across subaccounts.</p>
                 </div>
 
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100">
-                    <h3 class="text-xl font-bold mb-2">Enterprise GST Reconciliation Engine</h3>
-                    <p class="text-sm text-emerald-600 font-semibold mb-4">Independent Solution Architecture</p>
-                    <p class="text-slate-600 mb-4">Designing an automated enterprise application to match SAP purchase data with GST portal records (GSTR-2B) for streamlined Input Tax Credit management, leveraging CAPM Node.js.</p>
+                <div class="bg-[#111] p-8 rounded-2xl border border-gray-800 relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-purple-500 group-hover:w-2 transition-all"></div>
+                    <h3 class="text-xl font-bold mb-2 text-white pl-4">Active Directory Integration Ecosystem</h3>
+                    <p class="text-gray-400 pl-4 text-sm leading-relaxed mb-4">Architected a highly scalable CAPM backend connecting to AD using TCP/Certificates and LDAP. Migrated extensive multi-tenant application logs to centralized Cloud Logging, implemented SAML2, and optimized overall infrastructure costs.</p>
                 </div>
 
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100">
-                    <h3 class="text-xl font-bold mb-2">Active Directory Integration Ecosystem</h3>
-                    <p class="text-sm text-blue-600 font-semibold mb-4">Infosys Ltd.</p>
-                    <p class="text-slate-600 mb-4">Architected a scalable CAPM backend connecting to AD using TCP/Certificates and LDAP. Migrated extensive multi-tenant application logs to centralized Cloud Logging, optimizing overall infrastructure costs.</p>
+                <div class="bg-[#111] p-8 rounded-2xl border border-gray-800 relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-emerald-500 group-hover:w-2 transition-all"></div>
+                    <h3 class="text-xl font-bold mb-2 text-white pl-4">Enterprise GST Reconciliation Engine</h3>
+                    <p class="text-gray-400 pl-4 text-sm leading-relaxed mb-4">Designed an automated enterprise solution matching internal SAP purchase data with external GST portal records (GSTR-2B) to streamline Input Tax Credit management, leveraging CAPM Node.js and secure API integrations.</p>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <section id="skills" class="py-20 bg-white">
-        <div class="max-w-6xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-8">Technical Expertise</h2>
-            <p class="text-lg font-medium text-slate-800 mb-8 flex justify-center items-center gap-2">
-                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                SAP Certified Associate - SAP Fiori Application Developer
-            </p>
-            <div class="flex flex-wrap justify-center gap-3">
-                <span class="px-4 py-2 bg-slate-100 rounded-full text-slate-700 font-medium text-sm">SAP UI5 / Fiori</span>
-                <span class="px-4 py-2 bg-slate-100 rounded-full text-slate-700 font-medium text-sm">CAPM (Node.js)</span>
-                <span class="px-4 py-2 bg-slate-100 rounded-full text-slate-700 font-medium text-sm">HANA Cloud</span>
-                <span class="px-4 py-2 bg-slate-100 rounded-full text-slate-700 font-medium text-sm">ODATAv2/v4</span>
-                <span class="px-4 py-2 bg-slate-100 rounded-full text-slate-700 font-medium text-sm">SBPA Process & Decisions</span>
-                <span class="px-4 py-2 bg-slate-100 rounded-full text-slate-700 font-medium text-sm">Event Mesh</span>
-                <span class="px-4 py-2 bg-slate-100 rounded-full text-slate-700 font-medium text-sm">Cloud Logging & Audit Log</span>
-                <span class="px-4 py-2 bg-slate-100 rounded-full text-slate-700 font-medium text-sm">Destination Service</span>
+    <!-- Hands-on BTP Services -->
+    <section id="btp-services" class="py-24 border-t border-gray-800 bg-[#0c0c0c]">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-6 text-white">Hands-on <span class="text-cyan-400">BTP Services</span></h2>
+            <p class="text-gray-400 mb-12 max-w-2xl mx-auto">Extensive production experience deploying, configuring, and integrating the following SAP Business Technology Platform services:</p>
+            
+            <div class="flex flex-wrap justify-center gap-4">
+                <span class="px-5 py-3 bg-gray-900 border border-gray-700 rounded-lg text-gray-300 font-medium hover:border-cyan-500 hover:text-cyan-400 transition-colors">SAP Build Process Automation (SBPA)</span>
+                <span class="px-5 py-3 bg-gray-900 border border-gray-700 rounded-lg text-gray-300 font-medium hover:border-cyan-500 hover:text-cyan-400 transition-colors">SAP HANA Cloud</span>
+                <span class="px-5 py-3 bg-gray-900 border border-gray-700 rounded-lg text-gray-300 font-medium hover:border-cyan-500 hover:text-cyan-400 transition-colors">SAP Event Mesh</span>
+                <span class="px-5 py-3 bg-gray-900 border border-gray-700 rounded-lg text-gray-300 font-medium hover:border-cyan-500 hover:text-cyan-400 transition-colors">SAP Job Scheduling Service</span>
+                <span class="px-5 py-3 bg-gray-900 border border-gray-700 rounded-lg text-gray-300 font-medium hover:border-cyan-500 hover:text-cyan-400 transition-colors">Authorization & Trust Management</span>
+                <span class="px-5 py-3 bg-gray-900 border border-gray-700 rounded-lg text-gray-300 font-medium hover:border-cyan-500 hover:text-cyan-400 transition-colors">SAP Destination Service</span>
+                <span class="px-5 py-3 bg-gray-900 border border-gray-700 rounded-lg text-gray-300 font-medium hover:border-cyan-500 hover:text-cyan-400 transition-colors">Cloud & Audit Logging</span>
+                <span class="px-5 py-3 bg-gray-900 border border-gray-700 rounded-lg text-gray-300 font-medium hover:border-cyan-500 hover:text-cyan-400 transition-colors">SAP Document Management</span>
+                <span class="px-5 py-3 bg-gray-900 border border-gray-700 rounded-lg text-gray-300 font-medium hover:border-cyan-500 hover:text-cyan-400 transition-colors">HTML5 App Repository</span>
+                <span class="px-5 py-3 bg-gray-900 border border-gray-700 rounded-lg text-gray-300 font-medium hover:border-cyan-500 hover:text-cyan-400 transition-colors">User-Provided Services</span>
+            </div>
+
+            <div class="mt-16 inline-flex items-center gap-3 px-6 py-4 bg-gray-900 border border-cyan-900/50 rounded-xl">
+                <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <div class="text-left">
+                    <p class="text-sm text-gray-400">Official Certification</p>
+                    <p class="text-white font-bold">SAP Certified Associate - SAP Fiori Application Developer</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-20 bg-slate-900 text-white">
-        <div class="max-w-3xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-6">Let's Build Something Together</h2>
-            <p class="text-slate-400 mb-10">Available for freelance consulting, full-time opportunities, and enterprise BTP architecture discussions.</p>
-            <div class="flex flex-col md:flex-row justify-center gap-4">
-                <a href="mailto:arish3521@gmail.com" class="px-8 py-4 bg-blue-600 rounded-md font-bold hover:bg-blue-700 transition">arish3521@gmail.com</a>
-                <a href="tel:+919797478539" class="px-8 py-4 bg-slate-800 border border-slate-700 rounded-md font-bold hover:bg-slate-700 transition">+91 9797478539</a>
+    <!-- Contact Call to Action (Updated) -->
+    <section id="contact" class="py-24 border-t border-gray-800 bg-[#0a0a0a] relative overflow-hidden">
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-cyan-900/10 rounded-full blur-[100px] -z-10"></div>
+        <div class="max-w-3xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-extrabold mb-6 text-white">Let's Build Something <span class="text-cyan-400">Together</span></h2>
+            <p class="text-gray-400 mb-10 text-lg">Available for freelance consulting, technical architecture discussions, and senior development roles.</p>
+            <div class="flex justify-center">
+                <!-- Button triggers the modal -->
+                <button onclick="toggleModal('contactModal')" class="px-8 py-4 bg-cyan-500 text-gray-950 rounded-lg font-bold hover:bg-cyan-400 transition-colors flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+                    Send me a Message
+                </button>
             </div>
         </div>
     </section>
 
-    <footer class="bg-slate-950 py-6 text-center text-slate-500 text-sm">
-        <p>&copy; 2026 Arish Sharma. All rights reserved.</p>
+    <footer class="bg-[#050505] py-8 text-center text-gray-600 text-sm border-t border-gray-900">
+        <p>&copy; 2026 Arish Sharma. Designed & Built for the Cloud.</p>
     </footer>
+
+    <!-- Contact Pop-up Modal -->
+    <div id="contactModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-sm transition-opacity" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex items-center justify-center min-h-screen p-4 text-center sm:p-0">
+            <div class="relative bg-gray-900 border border-gray-700 rounded-2xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:max-w-lg w-full">
+                <div class="px-6 py-6 sm:px-8 sm:py-8">
+                    <div class="flex justify-between items-center mb-5">
+                        <h3 class="text-2xl font-bold text-white" id="modal-title">Get in Touch</h3>
+                        <button onclick="toggleModal('contactModal')" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        </button>
+                    </div>
+                    
+                    <!-- Formspree Form Integration -->
+                    <!-- REPLACE 'YOUR_FORM_ID' WITH YOUR ACTUAL FORMSPREE ID -->
+                    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-4">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-400 mb-1">Your Name</label>
+                            <input type="text" name="name" id="name" required class="w-full bg-[#0a0a0a] border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-400 mb-1">Your Email</label>
+                            <input type="email" name="email" id="email" required class="w-full bg-[#0a0a0a] border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-400 mb-1">Message</label>
+                            <textarea name="message" id="message" rows="4" required class="w-full bg-[#0a0a0a] border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors resize-none"></textarea>
+                        </div>
+                        <div class="pt-2">
+                            <button type="submit" class="w-full px-8 py-3.5 bg-cyan-500 text-gray-950 rounded-lg font-bold hover:bg-cyan-400 transition-colors">
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript to toggle the modal -->
+    <script>
+        function toggleModal(modalID) {
+            const modal = document.getElementById(modalID);
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
+    </script>
 
 </body>
 </html>
