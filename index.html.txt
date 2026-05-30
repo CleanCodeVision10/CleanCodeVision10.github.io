@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arish Sharma | Full Stack BTP Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+
+    <nav class="bg-white shadow-sm fixed w-full z-10 top-0">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="font-bold text-xl text-blue-600">Arish Sharma</a>
+            <div class="space-x-6 text-sm font-medium">
+                <a href="#services" class="hover:text-blue-600 transition">Services</a>
+                <a href="#projects" class="hover:text-blue-600 transition">Projects</a>
+                <a href="#skills" class="hover:text-blue-600 transition">Skills</a>
+                <a href="#contact" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">Contact Me</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="pt-32 pb-20 px-4 max-w-6xl mx-auto text-center">
+        <h1 class="text-5xl font-extrabold mb-6">Full Stack <span class="text-blue-600">SAP BTP</span> Developer</h1>
+        <p class="text-xl text-slate-600 max-w-2xl mx-auto mb-10">
+            Specializing in SAP UI5 Freestyle, CAPM (Node.js), and end-to-end BTP cloud deployments. I build secure, scalable, and automated enterprise workflows.
+        </p>
+        <div class="flex justify-center gap-4">
+            <a href="#projects" class="px-6 py-3 border-2 border-slate-800 text-slate-800 font-semibold rounded-md hover:bg-slate-800 hover:text-white transition">View My Work</a>
+            <a href="https://github.com/CleanCodeVision10" target="_blank" class="px-6 py-3 border-2 border-slate-200 bg-slate-200 text-slate-800 font-semibold rounded-md hover:bg-slate-300 transition">GitHub Profile</a>
+        </div>
+    </section>
+
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center">Enterprise Services</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-6 border border-slate-100 rounded-xl shadow-sm hover:shadow-md transition">
+                    <h3 class="text-xl font-bold mb-3 text-blue-600">UI5 Frontend Engineering</h3>
+                    <p class="text-slate-600">Developing responsive, free-style SAP UI5 and Fiori applications. Expertise in complex controls like VizFrames and integrating destination-based access.</p>
+                </div>
+                <div class="p-6 border border-slate-100 rounded-xl shadow-sm hover:shadow-md transition">
+                    <h3 class="text-xl font-bold mb-3 text-blue-600">CAPM Backend Architecture</h3>
+                    <p class="text-slate-600">Building scalable backend services using Node.js and CAPM framework. Specializing in S/4HANA integrations, custom APIs, and Active Directory linkages.</p>
+                </div>
+                <div class="p-6 border border-slate-100 rounded-xl shadow-sm hover:shadow-md transition">
+                    <h3 class="text-xl font-bold mb-3 text-blue-600">BTP Security & Automation</h3>
+                    <p class="text-slate-600">Implementing SBPA for workflow decisions, centralized Cloud Logging, SAML2/Identity Provider setup, and optimizing subaccount tenancy costs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-20 bg-slate-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center">Featured Solutions</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100">
+                    <h3 class="text-xl font-bold mb-2">BTP Security Observability Dashboard</h3>
+                    <p class="text-sm text-blue-600 font-semibold mb-4">Infosys Ltd. | Pharma Client</p>
+                    <p class="text-slate-600 mb-4">Built a freestyle UI5 dashboard visualizing SaaS data via VizFrames. Engineered the CAPM backend to integrate Audit Log APIs, SBPA Decisions, and real-time application logging for secure access control.</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100">
+                    <h3 class="text-xl font-bold mb-2">Internal Control Finance Report (ICFR)</h3>
+                    <p class="text-sm text-blue-600 font-semibold mb-4">Infosys Ltd.</p>
+                    <p class="text-slate-600 mb-4">Developed an end-to-end CAPM/UI5 application interfacing with S/4HANA via Cloud Connector. Utilized My Inbox for multi-level approvals and SBPA Decisions for dynamic destination fetching.</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100">
+                    <h3 class="text-xl font-bold mb-2">Enterprise GST Reconciliation Engine</h3>
+                    <p class="text-sm text-emerald-600 font-semibold mb-4">Independent Solution Architecture</p>
+                    <p class="text-slate-600 mb-4">Designing an automated enterprise application to match SAP purchase data with GST portal records (GSTR-2B) for streamlined Input Tax Credit management, leveraging CAPM Node.js.</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100">
+                    <h3 class="text-xl font-bold mb-2">Active Directory Integration Ecosystem</h3>
+                    <p class="text-sm text-blue-600 font-semibold mb-4">Infosys Ltd.</p>
+                    <p class="text-slate-600 mb-4">Architected a scalable CAPM backend connecting to AD using TCP/Certificates and LDAP. Migrated extensive multi-tenant application logs to centralized Cloud Logging, optimizing overall infrastructure costs.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-8">Technical Expertise</h2>
+            <p class="text-lg font-medium text-slate-800 mb-8 flex justify-center items-center gap-2">
+                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                SAP Certified Associate - SAP Fiori Application Developer
+            </p>
+            <div class="flex flex-wrap justify-center gap-3">
+                <span class="px-4 py-2 bg-slate-100 rounded-full text-slate-700 font-medium text-sm">SAP UI5 / Fiori</span>
+                <span class="px-4 py-2 bg-slate-100 rounded-full text-slate-700 font-medium text-sm">CAPM (Node.js)</span>
+                <span class="px-4 py-2 bg-slate-100 rounded-full text-slate-700 font-medium text-sm">HANA Cloud</span>
+                <span class="px-4 py-2 bg-slate-100 rounded-full text-slate-700 font-medium text-sm">ODATAv2/v4</span>
+                <span class="px-4 py-2 bg-slate-100 rounded-full text-slate-700 font-medium text-sm">SBPA Process & Decisions</span>
+                <span class="px-4 py-2 bg-slate-100 rounded-full text-slate-700 font-medium text-sm">Event Mesh</span>
+                <span class="px-4 py-2 bg-slate-100 rounded-full text-slate-700 font-medium text-sm">Cloud Logging & Audit Log</span>
+                <span class="px-4 py-2 bg-slate-100 rounded-full text-slate-700 font-medium text-sm">Destination Service</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-slate-900 text-white">
+        <div class="max-w-3xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-6">Let's Build Something Together</h2>
+            <p class="text-slate-400 mb-10">Available for freelance consulting, full-time opportunities, and enterprise BTP architecture discussions.</p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="mailto:arish3521@gmail.com" class="px-8 py-4 bg-blue-600 rounded-md font-bold hover:bg-blue-700 transition">arish3521@gmail.com</a>
+                <a href="tel:+919797478539" class="px-8 py-4 bg-slate-800 border border-slate-700 rounded-md font-bold hover:bg-slate-700 transition">+91 9797478539</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-950 py-6 text-center text-slate-500 text-sm">
+        <p>&copy; 2026 Arish Sharma. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
